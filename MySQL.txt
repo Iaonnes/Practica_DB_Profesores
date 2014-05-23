@@ -1,0 +1,33 @@
+using System;
+using MySql.Data.MySqlClient;
+using System.Linq;
+using System.Collections;
+
+namespace Profesor
+{
+	
+	public class MySQL
+	{
+		public MySqlConnection myConnection;
+		public MySQL()
+		{
+		}
+			public void abrirConexion(){
+					string connectionString =
+                    "Server=localhost;" +
+					"Database=escuela;" +
+					"User ID=root;" +
+					"Password=juan1989;" +
+					"Pooling=false;";
+					
+					this.myConnection = new MySqlConnection(connectionString);
+					this.myConnection.Open();
+					
+					}
+					
+					public void cerrarConexion(){
+					this.myConnection.Close();
+					this.myConnection = null;
+		}
+	}
+}

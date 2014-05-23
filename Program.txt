@@ -1,0 +1,103 @@
+using System;
+using MySql.Data.MySqlClient;
+using System.Linq;
+using System.Collections;
+
+namespace Profesor
+{
+	class Program
+	{  
+	
+		
+		public static void Main(string[] args)
+		{
+			bool salir;
+			do{
+			Console.WriteLine("\tMenu");
+			
+			Console.WriteLine("1) Ingresar Nuevo");
+			Console.WriteLine("2) Editar Codigo ");
+			Console.WriteLine("3) Editar Nombre");
+			Console.WriteLine("4) Eliminar por Id");
+			Console.WriteLine("5) Mostrar Todos");
+			Console.WriteLine("6) salir\n");
+			
+			
+			Profesor profesor = new Profesor();
+			
+			
+			int opc = int.Parse(Console.ReadLine());
+			switch(opc){
+					
+				case 1 :
+					
+					Console.WriteLine("\nIngresa codigo");
+					string codigo=Console.ReadLine();
+			
+					Console.WriteLine("Ingresa nombre\n");
+					string nombre=Console.ReadLine();
+			
+			profesor.insertarRegistroNuevo(codigo,nombre);
+			
+			break;
+			
+				case 2:
+			      
+				    Console.WriteLine("\nIngresa el id");
+					string id=Console.ReadLine();
+			
+					Console.WriteLine("Ingresa el nuevo codigo\n");
+					 codigo=Console.ReadLine();
+			
+			profesor.editarCodigoRegistro(id,codigo);			
+			
+			break;
+			
+				case 3:
+			      
+				    Console.WriteLine("\nIngresa el id");
+					id=Console.ReadLine();
+			
+					Console.WriteLine("Ingresa el nuevo nombre\n");
+					 nombre=Console.ReadLine();
+			
+			profesor.editarNombreRegistro(id,nombre);			
+			
+			break;
+			
+			
+			    case 4:
+			      
+			Console.WriteLine("\nIngresa el id\n");
+					id=Console.ReadLine();
+			
+			profesor.eliminarRegistroPorId(id);
+						
+			
+			break;
+			
+				case 5:
+				
+				profesor.mostrarTodos();	
+			
+			break;
+			
+		default: break;
+			
+									
+			}
+			
+		
+			
+			
+			
+			 Console.Write("\nDesea Salir? s/n: ");
+			 salir = Char.ToLower(Console.ReadLine().FirstOrDefault()) == 'n';
+                         Console.Clear ();
+		} while (salir);
+			 
+                        
+			
+		}
+	}
+}
